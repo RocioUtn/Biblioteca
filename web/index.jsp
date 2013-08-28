@@ -31,14 +31,14 @@ function ValidarB()
 }
 function ValidarI()
 {
-	if(document.getElementById("username") == "")
+        if(document.getElementById("username").value == "")
 	{
 		alert("Debe completar el nombre de usuario.");
 		return false;
 	}
-	if(document.getElementById("password") == "")
+	if(document.getElementById("password").value == "")
 	{
-		alert("Debe completar la contraseña del usuario.");
+		alert("Debe completar la contraseÃ±a del usuario.");
 		return false;
 	}
 	return true;
@@ -54,6 +54,10 @@ function ValidarI()
    background-color: #FC9;
    color:#777;
 }
+
+#trResult:hover{
+    font-size: 18px;
+}
 </style>
 <link href="estilo.css" rel="stylesheet" type="text/css" />
 </head>
@@ -62,8 +66,8 @@ function ValidarI()
 
 <div class="container">
   <div class="header" align="center">
-  	<h1 style="padding-top:10px; margin-bottom:-5px">SOReLTe</h1>
-	Sistema Online de Reserva de Libros de la Tecnologica
+  	<h1 style="padding-top:10px; margin-bottom:-5px">Biblioteca Virtual</h1>
+        Sistema Online de Reserva de Libros
   </div>
   <div class="sidebar1" align="center">
     <%
@@ -85,23 +89,26 @@ function ValidarI()
     else
     {
     %>
-    <ul class="nav">
-      <li> <%=user.getUsername()%> </li>
-      <li><a href="#">Modificar mis datos</a></li>
-      <li><a href="#">Cerrar Sesi&oacute;n</a></li>
+    <ul class="nav2">
+      <li><a href="ModificarDatos.jsp">Modificar mis datos <img src="lapiz.png" height="22" style="margin-bottom:-5px"></a></li>
+      <li><a href="MisReservas.jsp">Mis Reservas <img src="libros.png" height="22" style="margin-bottom:-5px"></a></li>
+      <li><a href="CierreSesion.jsp">Cerrar Sesi&oacute;n: <b><%=user.getUsername()%></b></a></li>
     </ul>
     <%
     }
     %>
   </div>
   <div class="content" align="center">
-	<form name="form" action="index.jsp" method="post" onsubmit="return ValidarB()">
+    <form name="form" action="index.jsp" method="post" onsubmit="return ValidarB()">
     <table width="100%" border="0" cellpadding="0">
       <tr>
         <td align="center"><input name="libro" id="libro" size="80" type="text" value=""/></td>
       </tr>
       <tr>
-        <td align="center"><input type="submit" value="Buscar"></td>
+        <td align="center">
+            <input type="submit" value="Buscar">&nbsp;
+                <a href="index.jsp?libro= " style=" font-size: 11px">Ver Todos</a>
+        </td>
       </tr>
       <tr>
         <td height="15"></td>
@@ -134,24 +141,24 @@ function ValidarI()
             {
                 %>
                 <table width="90%" border="0" cellpadding="0" id="TablaResultados">
-                    <tr style="background-color:#000; color:#FFF">
+                    <tr style="background-color:#252f4e; color:#FFF">
                     <td width="43%" align="center">
                       T&iacute;tulo 
                     </td>
                     <td width="43%" align="center">
                       Autor
                     </td>
-                    <td width="14%" align="center">
-                      &nbsp;
+                    <td width="14%" align="center">&nbsp;
+                      
                     </td>
                     </tr>
                 <%
                 while(rs.next())
                 {
                 %>
-                <tr>
-                    <td align="center"><%=rs.getString("titulo")%></td>
-                    <td align="center"><%=rs.getString("autor")%></td>
+                <tr id="trResult">
+                    <td align="center"><a href='VerLibro.jsp?isbn=<%=rs.getString("isbn")%>'><%=rs.getString("titulo")%></a></td>
+                    <td align="center" style=" color: #42413C"><%=rs.getString("autor")%></td>
                     <td align="center"><a href='ReservarLibro.jsp?isbn=<%=rs.getString("isbn")%>'>Reservar</a></td>
                 </tr>
                 <%

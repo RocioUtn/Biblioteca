@@ -40,8 +40,8 @@ public class ValidaIngreso {
                 {
                     user.setNombre(rs.getString("nombre"));
                     user.setApellido(rs.getString("apellido"));
-                    user.setDni(Integer.toString(rs.getInt("dni")));
-                    user.setTel(Integer.toString(rs.getInt("telefono")));
+                    user.setDni(Long.toString(rs.getLong("dni")));
+                    user.setTel(Long.toString(rs.getLong("telefono")));
                     conn.Desconectar(); 
                     return 0;
                 }
@@ -58,7 +58,7 @@ public class ValidaIngreso {
                 user.setUsername(null);
                 user.setPassword(null);
                 return 2;
-            }    
+             }    
         }
         else
         {

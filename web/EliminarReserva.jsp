@@ -9,6 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="estilo.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <%
@@ -23,7 +24,7 @@
           String sql="DELETE FROM reservas WHERE usuario='"+usu+"' AND isbn='"+libro+"'";
            consulta.executeUpdate(sql);
            %>
-              <script>alert("Reserva eliminada");history.back();</script>   
+              <script>alert("Reserva eliminada");location='MisReservas.jsp';</script>   
            <%
              
          }

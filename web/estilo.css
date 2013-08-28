@@ -21,13 +21,15 @@ a img { /* este selector elimina el borde azul predeterminado que se muestra en 
 }
 
 /* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
+
 a:link {
 	color: #42413C;
-	text-decoration: underline; /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
+        text-decoration: none;
+	 /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
 }
 a:visited {
-	color: #6E6C64;
-	text-decoration: underline;
+	color: #42413C;
+        text-decoration: none;
 }
 a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usuario que navegue mediante el teclado la misma experiencia de hover (paso por encima) que experimenta un usuario que emplea un ratón. */
 	text-decoration: none;
@@ -35,6 +37,8 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
 
 /* ~~ este contenedor de anchura fija rodea a las demás divs ~~ */
 .container {
+        min-height: 100%; /* ie6 ignores min-height completely */
+        height: 100%;
 	width: 960px;
 	background-color: #FFF;
 	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño */
@@ -42,7 +46,9 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
 
 /* ~~ no se asigna una anchura al encabezado. Se extenderá por toda la anchura del diseño. Contiene un marcador de posición de imagen que debe sustituirse por su propio logotipo vinculado ~~ */
 .header {
-	background-color: #ADB96E;
+	background-color: #485782;
+    color: #FFF;
+	background-image:url(fondo.png);
 }
 
 /* ~~ Estas son las columnas para el diseño. ~~ 
@@ -59,13 +65,20 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
 .sidebar1 {
 	float: left;
 	width: 230px;
-	background-color: #EADCAE;
-	padding-bottom: 10px;
+	height: 400px;
+	overflow: hidden;
+	background-color: #b9c2dd;
 }
 .content {
 	padding: 10px 0;
 	width: 730px;
 	float: left;
+        height: 100%;
+}
+.contentFull {
+	margin-left:auto;
+	margin-right:auto;
+	width: 100%;
 }
 
 /* ~~ Este selector agrupado da espacio a las listas del área de .content ~~ */
@@ -78,11 +91,24 @@ ul.nav {
 	list-style: none; /* esto elimina el marcador de lista */
 	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
 }
+ul.nav2 {
+	list-style: none; /* esto elimina el marcador de lista */
+	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
+}
+ul.nav2 li {
+	border-bottom:1px solid #81879a;
+	height:30px;
+	padding-top:5px;
+}
+ul.nav2 li:hover {
+	background-color:#ced4e7;
+}
 
 /* ~~ El pie de página ~~ */
 .footer {
 	padding: 10px 0;
-	background-color: #CCC49F;
+    color: #FFF;
+	background-color: #485782;
 	position: relative;/* esto da a IE6 hasLayout para borrar correctamente */
 	clear: both; /* esta propiedad de borrado fuerza a .container a conocer dónde terminan las columnas y a contenerlas */
 }
