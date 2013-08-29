@@ -18,12 +18,16 @@
             Conectar conn = new Conectar();
             String resp = conn.Conectar();
             String nbre, apell, aux, contraseña,usu, tel;
-            String doc, modifica;
+            String doc;
+            String modifica =  "no";
             
             if (resp.equals("OK"))
             {
-             modifica = request.getParameter("Mod");
-             
+             if(request.getParameter("Mod") != null)
+             {
+                modifica = request.getParameter("Mod");
+             }
+              
              nbre=request.getParameter("nombre");
              apell=request.getParameter("apellido");
              //aux=request.getParameter("dni");

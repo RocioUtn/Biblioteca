@@ -86,6 +86,11 @@
            ResultSet rs=consulta.executeQuery(sql);
 
            int i=1;
+           //Date hoy = new Date();
+           java.util.Calendar cal = java.util.Calendar.getInstance();
+           java.util.Date utilDate = cal.getTime();
+           java.sql.Date hoy = new Date(utilDate.getTime());
+           
            while(rs.next())
            {
              %>
@@ -97,13 +102,16 @@
                 <td align="center"> <%=rs.getDate("fecha_hasta")%></td>
                 <td align="center">
                     <%
-                    Date hoy = new Date(0);
-                    int comparaFecha = hoy.compareTo(rs.getDate("fecha_hasta"));
-                    if(comparaFecha <= 0)
+                    //int comparaFecha = hoy.compareTo(rs.getDate("fecha_hasta"));
+                    if(hoy.before(rs.getDate("fecha_hasta")))
                     {
                         %>
                         <a onClick="Elimina('EliminarReserva.jsp?isbn=<%=rs.getString("isbn")%>')" style=" cursor: pointer;">Eliminar</a>
                         <%
+                    }
+                    else
+                    {
+                        out.print("Finalizado");
                     }
                     %>
                 </td>
